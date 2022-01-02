@@ -21,6 +21,9 @@ class Contact{
     }
 }
 
+//AddressBook Array
+var addressBook = new Array();
+
 //Initializing Function 
 function contactDetails(firstName,lastName,address,state,city,zipCode,email,phoneNumber){
     const firstNamePattern = /^[A-Z][a-zA-Z]{3,}/;
@@ -48,13 +51,21 @@ function contactDetails(firstName,lastName,address,state,city,zipCode,email,phon
     let phoneNumber_Check = phoneNumberPattern.test(phoneNumber);
 
         if(firstName_Check == true && lastName_Check == true && address_Check == true && state_Check == true && city_Check == true
-            && zipCode_Check == true && email_Check == true && phoneNumber_Check == true){
+                        && zipCode_Check == true && email_Check == true && phoneNumber_Check == true){
+           
             let newCotact = new Contact(firstName,lastName,address,state,city,zipCode,email,phoneNumber);
             console.log("Contact Added Successfully");
-            console.log(newCotact);
+            
+            addressBook.push(newCotact);
+
         }else{
             throw 'Contact Details Are Invalid';
         }
 }
 //Calling Fucntion
 contactDetails("Suhas","Bhor","Pune","Maharashtra","Pune","411 057","suhas@gmail.com","91 1234567891");
+
+//Displaying Contact In Address Book
+for(let i = 0 ; i < addressBook.length ; i++){
+    console.log(addressBook[i]);
+}
