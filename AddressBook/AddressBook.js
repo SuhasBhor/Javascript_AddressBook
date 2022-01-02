@@ -53,19 +53,54 @@ function contactDetails(firstName,lastName,address,state,city,zipCode,email,phon
         if(firstName_Check == true && lastName_Check == true && address_Check == true && state_Check == true && city_Check == true
                         && zipCode_Check == true && email_Check == true && phoneNumber_Check == true){
            
-            let newCotact = new Contact(firstName,lastName,address,state,city,zipCode,email,phoneNumber);
+            let newContact = new Contact(firstName,lastName,address,state,city,zipCode,email,phoneNumber);
             console.log("Contact Added Successfully");
             
-            addressBook.push(newCotact);
+            addressBook.push(newContact);
 
         }else{
             throw 'Contact Details Are Invalid';
         }
 }
-//Calling Fucntion
-contactDetails("Suhas","Bhor","Pune","Maharashtra","Pune","411 057","suhas@gmail.com","91 1234567891");
 
-//Displaying Contact In Address Book
-for(let i = 0 ; i < addressBook.length ; i++){
-    console.log(addressBook[i]);
+//Edit Contact
+function editContact(findName,editedVariable,variableNewValue){
+    addressBook.forEach(newContact => {
+        if(newContact.firstName == findName){
+            switch(editedVariable){
+                case "firstName":
+                    newContact.firstName = variableNewValue;
+                    break;
+                case "lastName":
+                    newContact.lastName = variableNewValue;
+                    break;
+                case "address":
+                    newContact.address = variableNewValue;
+                    break;
+                case "state":
+                    newContact.state = variableNewValue;
+                    break;
+                case "city":
+                    newContact.city = variableNewValue;
+                    break;
+                case "zipCode":
+                    newContact.zipCode = variableNewValue;
+                    break;  
+                case "firstName":
+                    newContact.firstName = variableNewValue;
+                    break;
+                case "lastName":
+                    newContact.lastName = variableNewValue;
+                    break;      
+            }
+        }
+    })
 }
+
+//Calling Contact Details Fucntion
+contactDetails("Suhas","Bhor","Pune","Maharashtra","Pune","411 057","suhas@gmail.com","91 1234567891");
+console.log(addressBook);
+
+//Calling Edit Contact Function
+editContact("Suhas","city","Hinjewadi");
+console.log(addressBook);
