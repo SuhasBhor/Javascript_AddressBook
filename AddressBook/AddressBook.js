@@ -129,6 +129,22 @@ function countContact(){
     console.log("\nTotal Contacts In Address Book Are: "+count + "\n");
 }
 
+function searchByCity_State(choice , name){
+    if(choice == "city"){
+        person = addressBook.filter(contact => contact.city == name)
+        .map(contact => contact.firstName);
+        console.log("Contact Found Who Is From "+name);
+        console.log(person);
+    }else if(choice == "state"){
+        person = addressBook.filter(contact => contact.state == name)
+        .map(contact => contact.firstName);
+        console.log("Contact Found Who Is From "+name);
+        console.log(person);
+    }else{
+        console.log("Provide Right City or State Name");
+    }
+}
+
 function selectFunction(select){
     switch(select){
         case "contactDetails":
@@ -151,14 +167,20 @@ function selectFunction(select){
         case "countContact":
                 countContact();
                 break;
+        case "searchByCity_State":
+                //Calling Search Function To Search Contact in Address Book
+                searchByCity_State("city","Pune");
+                break;
     }
 }
 
 selectFunction("contactDetails");
 selectFunction("countContact");
+selectFunction("searchByCity_State");
 selectFunction("editContact");
 selectFunction("deleteContact");
 selectFunction("countContact");
+selectFunction("searchByCity_State");
 
 
 
