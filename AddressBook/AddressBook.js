@@ -65,42 +65,80 @@ function contactDetails(firstName,lastName,address,state,city,zipCode,email,phon
 
 //Edit Contact
 function editContact(findName,editedVariable,variableNewValue){
-    addressBook.forEach(newContact => {
-        if(newContact.firstName == findName){
-            switch(editedVariable){
-                case "firstName":
-                    newContact.firstName = variableNewValue;
-                    break;
-                case "lastName":
-                    newContact.lastName = variableNewValue;
-                    break;
-                case "address":
-                    newContact.address = variableNewValue;
-                    break;
-                case "state":
-                    newContact.state = variableNewValue;
-                    break;
-                case "city":
-                    newContact.city = variableNewValue;
-                    break;
-                case "zipCode":
-                    newContact.zipCode = variableNewValue;
-                    break;  
-                case "firstName":
-                    newContact.firstName = variableNewValue;
-                    break;
-                case "lastName":
-                    newContact.lastName = variableNewValue;
-                    break;      
+    if(addressBook.length == null){
+        console.log("Add Contact In Address Book");
+    }else{
+        addressBook.forEach(newContact => {
+            if(newContact.firstName == findName){
+                switch(editedVariable){
+                    case "firstName":
+                        newContact.firstName = variableNewValue;
+                        break;
+                    case "lastName":
+                        newContact.lastName = variableNewValue;
+                        break;
+                    case "address":
+                        newContact.address = variableNewValue;
+                        break;
+                    case "state":
+                        newContact.state = variableNewValue;
+                        break;
+                    case "city":
+                        newContact.city = variableNewValue;
+                        break;
+                    case "zipCode":
+                        newContact.zipCode = variableNewValue;
+                        break;  
+                    case "firstName":
+                        newContact.firstName = variableNewValue;
+                        break;
+                    case "lastName":
+                        newContact.lastName = variableNewValue;
+                        break;      
+                }
             }
-        }
-    })
+        })
+    }
 }
 
-//Calling Contact Details Fucntion
-contactDetails("Suhas","Bhor","Pune","Maharashtra","Pune","411 057","suhas@gmail.com","91 1234567891");
-console.log(addressBook);
+function deleteContact(first_Name){
+    if(addressBook.length == null){
+        console.log("Add Contact In Address Book");
+    }else{
+        for(let i = 0; i <addressBook.length ; i++){
+            if(addressBook[i].firstName == first_Name){
+                addressBook.splice(i,1);
+                console.log("Contact Deleted Successfully");
+            }
+        }
+    }
+}
 
-//Calling Edit Contact Function
-editContact("Suhas","city","Hinjewadi");
-console.log(addressBook);
+function selectFunction(select){
+    switch(select){
+        case "contactDetails":
+                //Calling Contact Details Fucntion
+                contactDetails("Suhas","Bhor","Pune","Maharashtra","Pune","411 057","suhas@gmail.com","91 1234567891");
+                contactDetails("Adinath","Bhor","Pune","Maharashtra","Pune","411 057","adinath@gmail.com","91 1098765432");
+                console.log(addressBook);
+                break;
+        case "editContact":
+                //Calling Edit Contact Function
+                editContact("Suhas","city","Hinjewadi");
+                console.log(addressBook);
+                break;
+        case "deleteContact":
+                //Calling Delete Contact Function
+                deleteContact("Adinath");
+                console.log(addressBook);
+                break;
+    }
+}
+
+selectFunction("contactDetails");
+selectFunction("editContact");
+selectFunction("deleteContact");
+
+
+
+
