@@ -26,7 +26,14 @@ var addressBook = new Array();
 
 //Initializing Function 
 function contactDetails(firstName,lastName,address,state,city,zipCode,email,phoneNumber){
-    const firstNamePattern = /^[A-Z][a-zA-Z]{3,}/;
+    
+    //Checking Duplicate Contact
+    addressBook.filter(contact => contact.firstName == firstName)
+    .reduce(() => count++ , count = 0);
+    if(count > 0){
+        console.log("Contact With Name " + firstName + " Already Present")
+    }else{
+        const firstNamePattern = /^[A-Z][a-zA-Z]{3,}/;
     let firstName_Check = firstNamePattern.test(firstName);
 
     const lastNamePattern = /^[A-Z][a-zA-Z]{3,}/;
@@ -61,6 +68,7 @@ function contactDetails(firstName,lastName,address,state,city,zipCode,email,phon
         }else{
             throw 'Contact Details Are Invalid';
         }
+    }   
 }
 
 //Edit Contact
@@ -127,6 +135,7 @@ function selectFunction(select){
                 //Calling Contact Details Fucntion
                 contactDetails("Suhas","Bhor","Pune","Maharashtra","Pune","411 057","suhas@gmail.com","91 1234567891");
                 contactDetails("Adinath","Bhor","Pune","Maharashtra","Pune","411 057","adinath@gmail.com","91 1098765432");
+                contactDetails("Suhas","Bhor","Pune","Maharashtra","Pune","411 057","suhas@gmail.com","91 1234567891");               
                 console.log(addressBook);
                 break;
         case "editContact":
