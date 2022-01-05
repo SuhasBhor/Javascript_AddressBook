@@ -114,6 +114,13 @@ function deleteContact(first_Name){
     }
 }
 
+function countContact(){
+    addressBook.reduce(() => {
+        count++;
+    },count = 0);
+    console.log("\nTotal Contacts In Address Book Are: "+count + "\n");
+}
+
 function selectFunction(select){
     switch(select){
         case "contactDetails":
@@ -132,13 +139,17 @@ function selectFunction(select){
                 deleteContact("Adinath");
                 console.log(addressBook);
                 break;
+        case "countContact":
+                countContact();
+                break;
     }
 }
 
 selectFunction("contactDetails");
+selectFunction("countContact");
 selectFunction("editContact");
 selectFunction("deleteContact");
-
+selectFunction("countContact");
 
 
 
