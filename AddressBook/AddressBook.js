@@ -178,11 +178,32 @@ function countContactInCity_State(choice , name){
     }
 }
 
-function sortContact(){
+function sortContact(choice){
     console.log(addressBook.sort((newContact1,newContact2) => {
-        if(newContact1.firstName < newContact2.firstName){
+        switch(choice){
+            case "firstName":
+                one = newContact1.firstName;
+                two = newContact2.firstName;
+                break;
+            case "city":
+                one = newContact1.city;
+                two = newContact2.city;
+                break;
+            case  "state":
+                one = newContact1.state;
+                two = newContact2.state;
+                break;
+            case "zipCode":
+                one = newContact1.zipCode;
+                two = newContact2.zipCode;
+                break;
+            default:
+                console.log("Provide Valid Input firstName or city or state or zipCode")
+        }
+   
+        if(one < two){
             return -1;
-        }else if(newContact1.firstName == newContact2.firstName){
+        }else if(one == two){
             return 0;
         }else{
             return 1;
@@ -232,7 +253,7 @@ function selectFunction(select){
                 break;
         case "sortContact":
                 //Calling Sort Function
-                sortContact();
+                sortContact("firstName");
                 break;
     }
 }
