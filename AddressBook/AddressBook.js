@@ -145,6 +145,20 @@ function searchByCity_State(choice , name){
     }
 }
 
+function viewByCityOrState(choice , name){
+    if(choice == "city"){
+        person = addressBook.filter(contact => contact.city == name)
+        console.log("Contact Found Who Is From "+name);
+        console.log(person);
+    }else if(choice == "state"){
+        person = addressBook.filter(contact => contact.state == name)
+        console.log("Contact Found Who Is From "+name);
+        console.log(person);
+    }else{
+        console.log("Provide Right City or State Name");
+    }
+}
+
 function selectFunction(select){
     switch(select){
         case "contactDetails":
@@ -169,7 +183,11 @@ function selectFunction(select){
                 break;
         case "searchByCity_State":
                 //Calling Search Function To Search Contact in Address Book
-                searchByCity_State("city","Pune");
+                searchByCity_State("state","Maharashtra");
+                break;
+        case "viewByCityOrState":
+                //Calling View By State or City Function
+                viewByCityOrState("state","Maharashtra");
                 break;
     }
 }
@@ -181,6 +199,7 @@ selectFunction("editContact");
 selectFunction("deleteContact");
 selectFunction("countContact");
 selectFunction("searchByCity_State");
+selectFunction("viewByCityOrState");
 
 
 
