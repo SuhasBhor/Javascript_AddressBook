@@ -109,6 +109,7 @@ function editContact(findName,editedVariable,variableNewValue){
     }
 }
 
+//Delete Contact From Address Book
 function deleteContact(first_Name){
     if(addressBook.length == null){
         console.log("Add Contact In Address Book");
@@ -122,6 +123,7 @@ function deleteContact(first_Name){
     }
 }
 
+//Count Total Number Of Contact 
 function countContact(){
     addressBook.reduce(() => {
         count++;
@@ -129,6 +131,7 @@ function countContact(){
     console.log("\nTotal Contacts In Address Book Are: "+count + "\n");
 }
 
+//Search Contact 
 function searchByCity_State(choice , name){
     if(choice == "city"){
         person = addressBook.filter(contact => contact.city == name)
@@ -145,6 +148,7 @@ function searchByCity_State(choice , name){
     }
 }
 
+//View Contact
 function viewByCityOrState(choice , name){
     if(choice == "city"){
         person = addressBook.filter(contact => contact.city == name)
@@ -159,13 +163,33 @@ function viewByCityOrState(choice , name){
     }
 }
 
+//Count Contact From Perticuler City Or State
+function countContactInCity_State(choice , name){
+    if(choice == "city"){
+        person = addressBook.filter(contact => contact.city == name)
+        .reduce(() => { count++;},count = 0);
+        console.log("Total Number Of Contact Found Who Is From "+name+" Are " +count);
+    }else if(choice == "state"){
+        person = addressBook.filter(contact => contact.state == name)
+        .reduce(() => { count++;},count = 0);
+        console.log("Total Number Of Contact Found Who Is From "+name+" Are " +count);
+    }else{
+        console.log("Provide Right City or State Name");
+    }
+}
+
 function selectFunction(select){
     switch(select){
         case "contactDetails":
                 //Calling Contact Details Fucntion
                 contactDetails("Suhas","Bhor","Pune","Maharashtra","Pune","411 057","suhas@gmail.com","91 1234567891");
                 contactDetails("Adinath","Bhor","Pune","Maharashtra","Pune","411 057","adinath@gmail.com","91 1098765432");
+                
+                //add contact for duplicate entry
                 contactDetails("Suhas","Bhor","Pune","Maharashtra","Pune","411 057","suhas@gmail.com","91 1234567891");               
+                
+                contactDetails("Prajwal","Bhor","Pune","Maharashtra","Pune","411 057","suhas@gmail.com","91 1234567891");
+                
                 console.log(addressBook);
                 break;
         case "editContact":
@@ -189,6 +213,10 @@ function selectFunction(select){
                 //Calling View By State or City Function
                 viewByCityOrState("state","Maharashtra");
                 break;
+        case "countContactInCity_State":
+                //Calling Count by City And State Function
+                countContactInCity_State("state","Maharashtra");
+                countContactInCity_State("city","Pune");
     }
 }
 
@@ -200,6 +228,7 @@ selectFunction("deleteContact");
 selectFunction("countContact");
 selectFunction("searchByCity_State");
 selectFunction("viewByCityOrState");
+selectFunction("countContactInCity_State");
 
 
 
